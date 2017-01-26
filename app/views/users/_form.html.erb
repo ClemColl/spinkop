@@ -30,7 +30,7 @@
 	<% end %>
 
 	<div class="actions">
-		<% unless user.id.nil? %>
+		<% unless user.id.nil? || !is_admin? %>
 			<%= link_to 'Supprimer', destroy_user_path(user.id), class: :sensible %>
 		<% end %>
 		<%= f.submit 'Confirmer' %>
