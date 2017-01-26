@@ -35,10 +35,10 @@ themes = [
 
 tags.each { |tag| Tag.create name: tag }
 
-# themes.each do |theme|
-# 	Theme.create(
-# 		name: theme[:name],
-# 		image: File.new("#{Rails.root}/db/files/themes/#{theme[:image]}.jpg"),
-# 		color: theme[:color]
-# 	)
-# end
+themes.each do |theme|
+	Theme.create(
+		name: theme[:name],
+		image: File.new("#{Rails.root}/db/files/themes/#{theme[:image]}.jpg"),
+		color: theme[:color]
+	)
+end
