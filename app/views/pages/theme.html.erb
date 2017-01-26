@@ -1,0 +1,22 @@
+<div class="sub sub-theme" style="background: <%= @theme.color %>">
+	<div class="wrapper">
+		<%= @theme.name %>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="issues">
+			<% @issues.each.with_index do |issue, i| %>
+				<% if i%2 == 0 %>
+					<div class="row">
+				<% end %>
+				<div class="col">
+					<%= link_to issue.content, issue_page_path(issue.id) %></li>
+				</div>
+				<% if i%2 == 1 || i+1 >= @issues.length %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</main>

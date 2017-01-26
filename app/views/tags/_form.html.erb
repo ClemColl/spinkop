@@ -1,0 +1,10 @@
+<%= form_for tag, url: post_tag_path(tag) do |f| %>
+	<%= f.field :name, input: :text_field, label: 'Nom' %>
+
+	<div class="actions">
+		<% unless tag.id.nil? %>
+			<%= link_to 'Supprimer', destroy_tag_path(tag.id), class: :sensible %>
+		<% end %>
+		<%= f.submit 'Enregistrer' %>
+	</div>
+<% end %>

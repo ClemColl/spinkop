@@ -1,0 +1,18 @@
+<main>
+	<div class="wrapper">
+		<table>
+			<% @issues.each do |issue| %>
+				<tr>
+					<td><%= link_to issue.content, articles_path(@theme.id, issue.id) %></td>
+					<td class="actions">
+						<%= link_to 'Modifier', edit_issue_path(@theme.id, issue.id) %>
+						<%= link_to 'Supprimer', destroy_issue_path(@theme.id, issue.id) %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+		<div class="actions">
+			<%= link_to 'Ajouter une problématique', new_issue_path(@theme.id) %>
+		</div>
+	</div>
+</main>

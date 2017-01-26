@@ -1,0 +1,23 @@
+<main>
+	<div class="wrapper">
+		<table>
+			<% @users.each do |user| %>
+				<td>
+					<%= content_tag :a, href: edit_user_path(user.id) do %>
+						<%= image_tag user.image.url(:thumb) %>
+						<%= user.firstname %>
+						<% if user.admin %>
+							<span>Admin</span>
+						<% end %>
+					<% end %>
+				</td>
+				<td class="actions">
+					<%= link_to 'Supprimer', destroy_user_path(user.id) %>
+				</td>
+			<% end %>
+		</table>
+		<div class="actions">
+			<%= link_to 'Ajouter un utilisateur', new_user_path %>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,31 @@
+.actions
+	display: flex
+	justify-content: flex-end
+	a, input
+		background: $thin-grey
+		margin: 0 0 0 5px
+		outline: none
+		padding: 15px
+		border: none
+		border-radius: 8px
+		cursor: pointer
+		color: $light-brand
+		+prefix(appearance, none)
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		font-size: 9px
+		font-weight: $extrabold
+		text-transform: uppercase
+		text-decoration: none
+		letter-spacing: 2px
+		&:hover
+			background: $light-grey
+		&:active
+			background: $thin-brand
+			color: $white
+		&:first-child
+			margin-left: 0
+		&.sensible
+			background: $red
+			color: $white

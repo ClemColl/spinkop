@@ -1,0 +1,23 @@
+<main>
+	<div class="wrapper">
+		<table>
+			<% @themes.each do |theme| %>
+				<tr>
+					<td>
+						<%= content_tag :a, href: issues_path(theme.id) do %>
+							<%= image_tag theme.image.url(:medium) %>
+							<%= theme.name %>
+						<% end %>
+					</td>
+					<td class="actions">
+						<%= link_to 'Modifier', edit_theme_path(theme.id) %>
+						<%= link_to 'Supprimer', destroy_theme_path(theme.id) %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+		<div class="actions">
+			<%= link_to 'Ajouter un thème', new_theme_path %>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,38 @@
+@import partials/main
+@import partials/admin
+
+form
+	.field.image
+		input
+			padding-left: 15px
+		img
+			width: calc(100% + 4px)
+			height: auto
+			margin: -2px 0 0 -2px
+			border-radius: 0 0 6px 6px
+			display: block
+	.tags
+		span
+			background: $thin-brand
+			color: $white
+			padding: 4px 6px 4px 8px
+			border-radius: 4px
+			margin-right: 4px
+			cursor: pointer
+			&:last-of-type
+				margin-right: 0
+			&::after
+				content: '×'
+				width: 0
+				height: 18px
+				top: 1px
+				overflow: hidden
+				position: relative
+				color: transparentize($white, 1)
+				font-size: 18px
+				display: inline-block
+				text-align: right
+				transition: 0.17s
+			&:hover::after
+				width: 13px
+				color: $white

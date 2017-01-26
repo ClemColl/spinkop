@@ -1,0 +1,13 @@
+<%= form_for issue, url: post_issue_path(issue) do |f| %>
+	<%= f.field :content, input: :text_field, label: 'Problématique' %>
+
+	<%= f.field :theme, input: :text_field, label: 'Thème' %>
+	<%= f.hidden_field :theme_id %>
+
+	<div class="actions">
+		<% unless issue.id.nil? %>
+			<%= link_to 'Supprimer', destroy_issue_path(issue.id), class: :sensible %>
+		<% end %>
+		<%= f.submit 'Enregistrer' %>
+	</div>
+<% end %>

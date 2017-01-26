@@ -1,0 +1,80 @@
+.sub
+	background: lighten($brand, 4)
+	padding: 20px 0
+	font-size: 18px
+	font-weight: $thin
+	color: $white
+	text-align: center
+	text-transform: uppercase
+	letter-spacing: 7px
+	line-height: 20px
+	&.sub-issue
+		font-size: 13px
+		font-weight: $regular
+		letter-spacing: 5px
+
+.land
+	width: 100%
+	background: linear-gradient(transparentize($brand, 1), $brand), asset-url('web.png') no-repeat center top, radial-gradient(transparentize($dark-brand, 1), $dark-brand), linear-gradient(transparentize($light-brand, 0.5), transparentize($light-brand, 0.5)), asset-url('land.png') no-repeat center top
+	background-size: cover, 90% auto, cover, cover, cover
+	height: 100vh
+	min-height: 200px
+	max-height: 300px
+	color: $white
+	&.home
+		min-height: 400px
+		max-height: 600px
+	+min-width(1400px)
+		background-size: cover, 1260px auto, cover, cover, cover
+	.wrapper
+		height: 100%
+		text-align: center
+		display: flex
+		flex-direction: column
+		justify-content: space-around
+		.web
+			background: asset-url('web-white.svg') no-repeat center center / contain
+			width: 100px
+			height: 100px
+			margin: 0 auto 20px auto
+		h1
+			margin-bottom: 5px
+			font-size: 35px
+			font-weight: $thin
+			text-transform: uppercase
+			letter-spacing: 5px
+			span
+				font-weight: normal
+		p
+			margin-bottom: 30px
+			text-transform: lowercase
+			font-weight: $extralight
+		form
+			max-width: 600px
+			margin: 0 auto
+			border: 2px solid $thin-brand
+			border-radius: 10px
+			display: flex
+			align-items: center
+			input
+				background: transparent
+				-webkit-appearance: none
+				-moz-appearance: none
+				border: none
+				font-family: 'Raleway'
+				font-size: 14px
+				outline: none
+				color: $white
+				&[type="text"]
+					padding: 14px 0 14px 14px
+					flex-grow: 1
+					+placeholder
+						color: $white
+				&[type=submit]
+					background: asset-url('search.svg') no-repeat center center / 20px auto
+					width: 48px
+					height: 48px
+					font-size: 0
+					color: transparent
+					flew-grow: 0
+					flex-shrink: 0

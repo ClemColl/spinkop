@@ -1,0 +1,38 @@
+<%= form_for user, url: post_user_path(user) do |f| %>
+	<div class="field">
+		<%= image_tag user.image.url(:medium) %>
+		<%= f.file_field :image %>
+		<%= f.error :image %>
+	</div>
+	<%= f.field :email, input: :text_field, label: 'Adresse email' %>
+	<div class="row">
+		<div class="col">
+			<%= f.field :firstname, input: :text_field, label: 'Prénom' %>
+		</div>
+		<div class="col">
+			<%= f.field :lastname, input: :text_field, label: 'Nom' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<%= f.field :password, input: :password_field, label: 'Mot de passe' %>
+			<%= f.field :password_confirmation, input: :password_field, label: 'Confirmation' %>
+		</div>
+		<div class="col">
+			<div class="field password_random">
+				<label for="user_password_random">Aléatoire</label>
+				<%= text_field_tag 'user[password_random]', nil, readonly: true %>
+			</div>
+		</div>
+	</div>
+	<% if is_admin? %>
+		<%= f.field :admin, input: :check_box, label: 'Administrateur' %>
+	<% end %>
+
+	<div class="actions">
+		<% unless user.id.nil? %>
+			<%= link_to 'Supprimer', destroy_user_path(user.id), class: :sensible %>
+		<% end %>
+		<%= f.submit 'Confirmer' %>
+	</div>
+<% end %>

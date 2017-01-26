@@ -1,0 +1,17 @@
+<% if controller_is?(:pages) %>
+	<header class="land<%= action_is?(:home) ? ' home' : '' %>">
+		<div class="wrapper">
+			<div>
+				<div class="web"></div>
+				<h1>Spin<span>kop</span></h1>
+				<p>Les particules du numériques</p>
+				<% if action_is?(:home) %>
+					<form>
+						<input type="text" placeholder="Rechercher"/>
+						<input type="submit" value="Rechercher"/>
+					</form>
+				<% end %>
+			</div>
+		</div>
+	</header>
+<% end %>

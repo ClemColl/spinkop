@@ -1,0 +1,100 @@
+@import partials/main
+@import partials/page
+
+.issue
+	padding: 50px 0
+	margin-bottom: 30px
+	color: $thin-brand
+	font-size: 18px
+	text-align: center
+
+.timeline
+	background: $thin-brand
+	height: 3px
+	margin: -3px 0 -30px 0
+	z-index: 3
+	position: relative
+	display: flex
+	justify-content: center
+	align-items: flex-start
+	> span
+		margin: -5px 5px 0 5px
+		cursor: pointer
+		transition: 0.1s
+		flex-shrink: 0
+		flex-grow: 0
+		> span:first-of-type
+			border: 3px solid $thin-brand
+			border-radius: 7px
+			width: 7px
+			height: 7px
+			margin: 0 auto 10px auto
+			display: block
+			transition: 0.15s
+		> span:last-of-type
+			background: $brand
+			padding: 5px 10px
+			border-radius: 30px
+			opacity: 0
+			color: $white
+			font-family: Helvetica, Arial, sans-serif
+			font-size: 10px
+			position: relative
+			display: inline-block
+			transform: translateY(-2px)
+			transition: 0.2s
+			span
+				content: ''
+				border: 6px solid transparent
+				top: -12px
+				left: 50%
+				margin-left: -6px
+				position: absolute
+				display: block
+		&:not([data-selected]) > span:first-of-type
+			background: $white !important
+		&[data-selected], &:hover
+			> span:last-of-type
+				opacity: 1
+				transform: translateY(4px)
+		&[data-selected]
+			cursor: default
+
+.articles
+	display: flex
+	align-items: flex-start
+	overflow: hidden
+	.article
+		width: 100vw
+		position: relative
+		flex-shrink: 0
+		flex-grow: 0
+		transition: 0.5s
+		.image
+			height: 300px
+			overflow: hidden
+			position: relative
+			.overlay
+				width: 100%
+				height: 100%
+				z-index: 2
+				position: absolute
+			img
+				width: 100%
+				height: auto
+				top: 50%
+				position: relative
+				display: block
+				transform: translateY(-50%)
+		.content
+			margin-top: 60px
+			color: $dark-grey
+			font-size: 16px
+			line-height: 26px
+			&::first-letter
+				margin-right: 15px
+				font-size: 150px
+				font-weight: $thin
+				float: left
+				line-height: 120px
+				color: $grey

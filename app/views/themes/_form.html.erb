@@ -1,0 +1,16 @@
+<%= form_for theme, url: post_theme_path(theme) do |f| %>
+	<div class="field">
+		<%= image_tag theme.image.url(:medium) %>
+		<%= f.file_field :image %>
+		<%= f.error :image %>
+	</div>
+	<%= f.field :name, input: :text_field, label: 'Nom' %>
+	<%= f.field :color, input: :color_field, label: 'Couleur' %>
+
+	<div class="actions">
+		<% unless theme.id.nil? %>
+			<%= link_to 'Supprimer', destroy_theme_path(theme.id), class: :sensible %>
+		<% end %>
+		<%= f.submit 'Enregistrer' %>
+	</div>
+<% end %>

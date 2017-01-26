@@ -1,0 +1,136 @@
+@import ../components/form
+@import ../components/rowcols
+
+.wrapper
+	max-width: 100%
+
+.admin
+	.nav, .breadcrump
+		.wrapper
+			&, div
+				display: flex
+				flex-wrap: wrap
+				align-items: center
+	.nav
+		background: $thin-brand
+		h2
+			margin-right: 20px
+		a
+			margin: 0 10px
+			padding: 20px 0
+			color: $white
+			&:last-of-type
+				margin-left: auto
+	.breadcrump
+		background: $light-grey
+		overflow: hidden
+		.wrapper div:hover a
+			&, &::after
+				background: $grey
+			&::after
+				border-color: $medium-grey
+			&:hover ~ a
+				&, &::after
+					background: transparent
+				&::after
+					border-color: $grey
+		a
+			padding: 10px 5px 10px 25px
+			color: $brand
+			display: flex
+			position: relative
+			align-items: center
+			font-size: 8px
+			font-weight: $extrabold
+			text-transform: uppercase
+			letter-spacing: 2px
+			transition: 0.2s
+			@for $i from 0 to 10
+				&:nth-of-type(#{10-$i})
+					z-index: $i
+			&:first-of-type
+				padding-left: 30px
+				margin-left: -30px
+			&::after
+				content: ''
+				width: 20px
+				height: 20px
+				margin: -10px -20px -10px 0
+				border: 0 solid $grey
+				border-top-width: 1px
+				border-right-width: 1px
+				z-index: -1
+				position: relative
+				display: inline-block
+				transform: translateX(-4px) rotate(45deg)
+				transition: 0.2s
+	a
+		display: block
+		text-decoration: none
+		&:first-of-type
+			margin-left: 0
+		&:last-of-type
+			margin-right: 0
+
+table
+	width: 100%
+	margin-bottom: 20px
+	td
+		&:first-of-type
+			flex-grow: 1
+		a
+			padding: 15px
+			display: flex
+			align-items: center
+			text-decoration: none
+			color: $dark-grey
+			&:hover
+				color: $light-brand
+			img
+				width: 30px
+				height: 30px
+				margin-right: 10px
+				border-radius: 30px
+				display: block
+			span
+				background: $thin-brand
+				margin-left: 4px
+				padding: 4px
+				border-radius: 4px
+				font-size: 8px
+				font-weight: $extrabold
+				color: $white
+				text-transform: uppercase
+				letter-spacing: 2px
+				display: inline-block
+		&.actions
+			padding-right: 10px
+			a
+				margin-top: 10px
+				margin-bottom: 10px
+	tr
+		border-top: 1px solid $thin-grey
+		display: flex
+		align-items: center
+		&:hover
+			background: $thin-grey
+			&, td
+				border-radius: 8px
+			+ tr
+				border-top-color: transparent
+			td a img
+				background: $light-grey
+		&:first-of-type
+			border-top: none
+
+form
+	max-width: 1000px
+	margin: 0 auto
+	.field
+		img
+			background: $thin-grey
+			width: 50px
+			height: 50px
+			margin: 15px
+			border-radius: 50px
+			display: block

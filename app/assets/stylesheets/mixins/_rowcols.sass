@@ -1,0 +1,29 @@
+=cols($numbers, $strict: null, $padding: $wrapper-padding)
+	@if $strict == strict
+		$strict: '> '
+	@else
+		$strict: ''
+		
+	#{$strict}.col
+		@each $breakpoint, $number in $numbers
+			@if $breakpoint == default
+				+col($number, $padding)
+			@else
+				+max($breakpoint)
+					+col($number, $padding, $previous)
+			$previous: $number
+		@content
+
+=col($number, $padding: $wrapper-padding, $previous: false)
+	width: 100%/$number
+	padding: 0 $padding/$number
+	@if $previous
+		&:nth-of-type(#{$previous}n+1), &:nth-of-type(#{$previous}n+#{$previous})
+			padding: 0 $padding/$number
+	&:nth-of-type(#{$number}n+1)
+		padding-left: 0
+		padding-right: $padding*($number - 1)/$number
+	&:nth-of-type(#{$number}n+#{$number})
+		padding-right: 0
+		padding-left: $padding*($number - 1)/$number
+	@content

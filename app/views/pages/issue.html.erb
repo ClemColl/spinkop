@@ -1,0 +1,35 @@
+<div class="sub sub-issue" style="background: <%= @theme.color %>">
+	<div class="wrapper">
+		<%= @issue.content %>
+	</div>
+</div>
+<div class="timeline" style="background: rgb(<%= @theme.rgb(-50).join(',') %>)">
+	<% @articles.each.with_index do |article, i| %>
+		<span<%= i == 0 ? ' data-selected' : '' %>>
+			<span style="border-color: rgb(<%= @theme.rgb(-50).join(',') %>);background: rgb(<%= @theme.rgb(-50).join(',') %>)"></span>
+			<span style="background: <%= @theme.color %>">
+				<span style="border-bottom-color: <%= @theme.color %>"></span>
+				<%= article.created_at.strftime("%d-%m-%Y") %>
+			</span>
+		</span>
+	<% end %>
+</div>
+<main>
+	<div class="articles">
+		<% @articles.each do |article| %>
+			<div class="article">
+				<% if article.image.exists? %>
+					<div class="image">
+						<div class="overlay" style="background: rgba(<%= @theme.rgb(-50).join(',') %>, 0.5)"></div>
+						<%= image_tag article.image.url(:cover) %>
+					</div>
+				<% end %>
+				<div class="wrapper">
+					<div class="content">
+						<%= article.content.html_safe %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</main>

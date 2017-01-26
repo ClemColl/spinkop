@@ -1,0 +1,40 @@
+<% defer_route :search %>
+<% defer_route :themes_search %>
+<% defer_route :issues_search %>
+<% defer_route :articles_search %>
+<% defer_route :tags_search %>
+
+<% if controller_is?(:sessions, :themes, :issues, :articles, :users) %>
+	<% if current_user? || (controller_is?(:sessions) && action_is?(:new, :create)) %>
+		<header class="admin">
+			<nav class="nav">
+				<div class="wrapper">
+					<h2>
+						<%= link_to 'Spinkop', admin_path, class: 'logo small' %>
+					</h2>
+					<% if current_user? %>
+						<%= link_to 'Thèmes', themes_path %>
+						<%= link_to 'Tags', tags_path %>
+						<% if is_admin? %>
+							<%= link_to 'Utilisateurs', users_path %>
+						<% end %>
+						<%= link_to 'Nouvelle problématique', new_main_issue_path %>
+						<%= link_to 'Nouvel article', new_main_article_path %>
+						<%= link_to 'Déconnexion', destroy_session_path %>
+					<% end %>
+				</div>
+			</nav>
+			<% unless @breadcrump.nil? || !current_user? %>
+				<nav class="breadcrump">
+					<div class="wrapper">
+						<div>
+							<% @breadcrump.each do |link| %>
+								<%= link_to *link %>
+							<% end %>
+						</div>
+					</div>
+				</nav>
+			<% end %>
+		</header>
+	<% end %>
+<% end %>

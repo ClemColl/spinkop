@@ -1,0 +1,21 @@
+<main>
+	<div class="content">
+	    <div class="wrapper">
+	        <h3>Sélectionnez un thème</h3>
+	        <p>Pour commencer veuillez choisir le thème que vous souhaitez</p>
+	        <div class="themes">
+				<%= theme_bubbles @themes do |theme| %>
+					<%= content_tag :a, class: :theme, href: theme_page_path(theme.id), style: background(:image, theme.image.url(:medium)) do %>
+                        <div class="overlay" style="<%= background :gradient, *theme.gradient %>">
+                            <div class="infos">
+                                <span class="name"><%= theme.name %></span>
+                                <span class="articles"><%= theme.articles_label %></span>
+                                <span class="more"></span>
+                            </div>
+                        </div>
+                    <% end %>
+				<% end %>
+	        </div>
+	    </div>
+	</div>
+</main>

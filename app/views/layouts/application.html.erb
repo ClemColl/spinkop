@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title base: :Spinkop %></title>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet %>
+        <%= current_stylesheet %>
+    </head>
+
+    <body>
+        <%= render 'admin' %>
+        <%= render 'header' %>
+        <%= render 'flash' %>
+
+        <%= yield %>
+
+        <%= defer_routes %>
+        <%= javascript %>
+        <%= current_javascript %>
+    </body>
+</html>
