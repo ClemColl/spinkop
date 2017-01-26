@@ -4,7 +4,7 @@
 <% defer_route :articles_search %>
 <% defer_route :tags_search %>
 
-<% if controller_is?(:sessions, :themes, :issues, :articles, :users) %>
+<% if controller_is?(:sessions, :themes, :issues, :articles, :users, :tags) %>
 	<% if current_user? || (controller_is?(:sessions) && action_is?(:new, :create)) %>
 		<header class="admin">
 			<nav class="nav">
