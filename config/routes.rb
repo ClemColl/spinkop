@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 		get '/:id' => 'users#show', as: :show_user
 		get '/:id/edit' => 'users#edit', as: :edit_user
 		patch '/:id/edit' => 'users#update', as: :update_user
-		get '/:id/destroy' => 'uses#destroy', as: :destroy_user
+		get '/:id/destroy' => 'users#destroy', as: :destroy_user
 	end
 
 	scope '/search' do
