@@ -17,6 +17,8 @@
 						<%= link_to 'Tags', tags_path %>
 						<% if is_admin? %>
 							<%= link_to 'Utilisateurs', users_path %>
+						<% else %>
+							<%= link_to 'Compte', edit_user_path(current_user.id) %>
 						<% end %>
 						<%= link_to 'Nouvelle problématique', new_main_issue_path %>
 						<%= link_to 'Nouvel article', new_main_article_path %>

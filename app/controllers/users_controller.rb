@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	before_action :authorize, only: [:account]
 	before_action :authorize_admin, only: [:index, :new, :create, :destroy]
 	before_action :authorize_admin_or_current_user, only: [:edit, :update]
 
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
 		@user.update user_params
 		@user.admin = is_admin? ? user_params[:admin] == '1' : false
 
-		if !@user.admin && @user.id == current_user.id && User.admins.length == 1
+		if !@user.admin && User.admins.length == 1 && @user.id == User.admins.first.id
 			flash[:error] = 'La plateforme doit avoir au moins un administrateur'
 		else
 			if @user.save
@@ -70,7 +71,7 @@ class UsersController < ApplicationController
 		def authorize_admin_or_current_user
 			unless is_admin_or_current_user? @user
 				flash[:error] = 'Vous n\'avez pas les droits suffisants pour effectuer cette action'
-				redirect_to root_path
+				redirect_to admin_path
 				true
 			else
 				false
