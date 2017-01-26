@@ -11,7 +11,9 @@
     <body>
         <%= render 'admin' %>
         <%= render 'header' %>
-        <%= render 'flash' %>
+        <% if current_user %>
+            <%= render 'flash' %>
+        <% end %>
 
         <%= yield %>
 
