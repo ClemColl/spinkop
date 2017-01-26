@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 		@user.update user_params
 		@user.admin = is_admin? ? user_params[:admin] == '1' : false
 
-		if !@user.admin && User.admins.length == 1
+		if !@user.admin && @user.id == current_user.id && User.admins.length == 1
 			flash[:error] = 'La plateforme doit avoir au moins un administrateur'
 		else
 			if @user.save
