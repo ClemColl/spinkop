@@ -39,7 +39,8 @@ class Article < ApplicationRecord
     end
 
     def header_content
-        self.content.gsub /\A([^\.]+\.).*\z/, '\1'
+        header = self.content.gsub /\A([^\.]+\.).*\z/m, '\1'
+        header.length > 27 ? header[0..26] : header
     end
 
     def main_content
