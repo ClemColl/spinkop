@@ -40,6 +40,7 @@ class Article < ApplicationRecord
 
     def header_content
         header = self.content.gsub /\A(.{40}.*?[\.\,\?\!]).*\z/m, '\1'
+        header.gsub /\A(\s*(?:<p>|)\s*["«»″‟˝“”].+?["«»″‟˝“”]).+/m, '\1'
         header.length > 195 ? header[0..196]+'...' : header
     end
 
