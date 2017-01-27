@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
 	before_action :authorize
 	before_action :set_tag, only: [:edit, :update, :destroy]
-	before_action :set_breadcrump
+	before_action :set_breadcrump, only: [:index, :edit]
 
 	def index
 		@tags = Tag.all

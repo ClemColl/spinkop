@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 	before_action :authorize, except: [:show, :index]
 	before_action :set_article, only: [:edit, :update, :destroy]
 	before_action :set_articles, only: [:index, :new, :create, :edit, :update]
-	before_action :set_breadcrump
+	before_action :set_breadcrump, only: [:index, :edit]
 
 	def show
 		respond_to do |format|
