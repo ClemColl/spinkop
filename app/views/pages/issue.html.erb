@@ -21,7 +21,7 @@
 				<% if article.image.exists? %>
 					<div class="image">
 						<div class="overlay" style="background: rgba(<%= @theme.rgb(-50).join(',') %>, 0.5)">
-							<%= strip_tags article.header_content %>
+							<p><%= strip_tags article.header_content %></p>
 						</div>
 						<%= image_tag article.image.url(:cover) %>
 					</div>
