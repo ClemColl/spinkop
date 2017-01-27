@@ -44,7 +44,7 @@ class Article < ApplicationRecord
     end
 
     def main_content
-        self.content[self.header_content.length-3..-1]
+        self.content[self.header_content.length-(self.header_content[-3..-1] == '...' ? 3 : 0)..-1]
     end
 
     def tag
