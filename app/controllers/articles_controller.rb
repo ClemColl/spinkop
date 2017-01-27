@@ -78,7 +78,7 @@ class ArticlesController < ApplicationController
 		end
 
 		def article_params
-			params.require(:article).permit(:content, :issue_id, :image)
+			params.require(:article).permit(:content, :issue_id, :image, :title)
 		end
 
 		def set_tags article

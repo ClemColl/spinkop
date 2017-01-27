@@ -21,14 +21,16 @@
 				<% if article.image.exists? %>
 					<div class="image">
 						<div class="overlay" style="background: rgba(<%= @theme.rgb(-50).join(',') %>, 0.5)">
-							<p><%= strip_tags article.header_content %></p>
+							<% unless article.title.blank? %>
+								<p><%= article.title %></p>
+							<% end %>
 						</div>
 						<%= image_tag article.image.url(:cover) %>
 					</div>
 				<% end %>
 				<div class="wrapper">
 					<div class="content">
-						<%= article.send(article.image.exists? ? :main_content : :content).html_safe %>
+						<%= article.main_content.html_safe %>
 					</div>
 				</div>
 			</div>

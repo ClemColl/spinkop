@@ -22,6 +22,7 @@ class Article < ApplicationRecord
 
     validates :issue, presence: { message: 'Cette problématique n\'existe pas' }
     validates :author, presence: { message: 'Aucun auteur n\'est enregistré pour cet article' }
+    validates :title, length: { maximum: 60, message: 'Le titre doit contenir %{count} caractères ou moins' }
     validates :content, presence: { message: 'Veuillez écrire un contenu pour l\'article' }
 
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
@@ -38,14 +39,12 @@ class Article < ApplicationRecord
         nil
     end
 
-    def header_content
-        header = self.content.gsub /\A(.{40}.*?[\.\,\?\!]).*\z/m, '\1'
-        header.gsub /\A(\s*(?:<p>|)\s*["«»″‟˝“”].+?["«»″‟˝“”]).+/m, '\1'
-        header.length > 195 ? header[0..196]+'...' : header
-    end
-
     def main_content
-        self.content[self.header_content.length-(self.header_content[-3..-1] == '...' ? 3 : 0)..-1]
+        if self.image.exists? && !self.title.blank?
+            self.content
+        else
+            self.title.blank? ? self.content : '<p>'+self.title+'</p>'+self.content
+        end
     end
 
     def tag
