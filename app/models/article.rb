@@ -38,6 +38,14 @@ class Article < ApplicationRecord
         nil
     end
 
+    def header_content
+        self.content.gsub /\A([^\.]+\.).*\z/, '\1'
+    end
+
+    def main_content
+        self.content[self.header_content.length..-1]
+    end
+
     def tag
     end
 
