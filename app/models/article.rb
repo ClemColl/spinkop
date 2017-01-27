@@ -26,6 +26,8 @@ class Article < ApplicationRecord
 
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
 
+    before_save :clear_content
+
     def theme_id
         if self.issue
             if self.issue.theme
@@ -38,4 +40,13 @@ class Article < ApplicationRecord
 
     def tag
     end
+
+    private
+        def clear_content
+            self.content.gsub! /<p>(?:\s|&nbsp;)*<\/p>/, ''
+            self.content.gsub! /(?:\s|&nbsp;)+/, ' '
+            self.content.gsub! /(?:\s|&nbsp;)<\/p>/, '</p>'
+            self.content.gsub! /<p>(?:\s|&nbsp;)/, '<p>'
+            self.content.gsub! /\s([:;,\.\?\!€\$\%])/, '&nbsp;\1'
+        end
 end
