@@ -69,7 +69,8 @@ var articles = {
 				});
 
 				tinymce.init({
-					selector: '#'+this.inputs.content.id
+					selector: '#'+this.inputs.content.id,
+					inline_styles: false
 				});
 
 				this.tags.init();
