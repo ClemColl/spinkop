@@ -21,4 +21,8 @@ class Issue < ApplicationRecord
     def to_s
         self.content
     end
+
+    def articles_label
+		articles.length.to_s+' article'+(articles.length > 1 ? 's' : '')
+	end
 end

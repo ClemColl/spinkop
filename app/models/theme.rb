@@ -50,6 +50,10 @@ class Theme < ApplicationRecord
 		rgb
 	end
 
+	def issues_label
+		issues.length.to_s+' problématique'+(issues.length > 1 ? 's' : '')
+	end
+
 	def articles_label
 		articles.length.to_s+' article'+(articles.length > 1 ? 's' : '')
 	end

@@ -1,16 +1,7 @@
 <%= form_for article, url: post_article_path(article) do |f| %>
 
-	<%= f.field :content, input: :text_area, label: 'Contenu' %>
-
 	<%= f.field :issue, input: :text_field, label: 'Problématique' %>
 	<%= f.hidden_field :issue_id %>
-
-	<div class="field image">
-		<%= f.file_field :image %>
-		<% if article.image.exists? %>
-			<%= image_tag article.image.url(:cover) %>
-		<% end %>
-	</div>
 
 	<%= f.field :tag, input: :text_field, label: 'Ajouter un tag' %>
 	<div class="tags">
@@ -18,6 +9,18 @@
 			<span><%= tag.name %><%= hidden_field_tag "article[tag_ids][#{i}]", tag.id %></span>
 		<% end %>
 	</div>
+
+	<div class="field image">
+		<%= f.file_field :image %>
+		<% if article.image.exists? %>
+			<div>
+				<div class="overlay" style="background: rgba(<%= @theme.rgb(-50).join(',') %>, 0.5)"></div>
+				<%= image_tag article.image.url(:cover) %>
+			</div>
+		<% end %>
+	</div>
+
+	<%= f.field :content, input: :text_area, label: 'Contenu' %>
 
 	<div class="actions">
 		<% unless article.id.nil? %>

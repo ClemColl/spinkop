@@ -7,6 +7,10 @@
 						<%= content_tag :a, href: issues_path(theme.id) do %>
 							<%= image_tag theme.image.url(:medium) %>
 							<%= theme.name %>
+							<div class="right">
+								<span><%= theme.issues_label %></span>
+								<span><%= theme.articles_label %></span>
+							</div>
 						<% end %>
 					</td>
 					<td class="actions">

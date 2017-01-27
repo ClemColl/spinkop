@@ -16,5 +16,7 @@ module Spinkop
     config.generators { |g| g.javascript_engine :js }
 
     config.exceptions_app = self.routes
+
+    config.i18n.default_locale = :fr
   end
 end

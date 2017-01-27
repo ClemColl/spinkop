@@ -3,7 +3,12 @@
 		<table>
 			<% @articles.each do |article| %>
 				<tr>
-					<td><%= link_to article.created_at, edit_article_path(@theme.id, @issue.id, article.id) %></td>
+					<td>
+						<%= content_tag :a, href: edit_article_path(@theme.id, @issue.id, article.id) do %>
+							<%= l(article.created_at, format: :long)  %>
+							<p class="extract"><%= strip_tags article.content[0..80] %>...</p>
+						<% end %>
+					</td>
 					<td class="actions">
 						<%= link_to 'Supprimer', destroy_article_path(@theme.id, @issue.id, article.id) %>
 					</td>

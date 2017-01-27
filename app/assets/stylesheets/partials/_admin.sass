@@ -76,8 +76,12 @@ table
 	width: 100%
 	margin-bottom: 20px
 	td
+		padding: 0 5px
 		&:first-of-type
 			flex-grow: 1
+			padding-left: 0
+		&:last-of-type:not(.actions)
+			padding-right: 0
 		a
 			padding: 15px
 			display: flex
@@ -92,17 +96,26 @@ table
 				margin-right: 10px
 				border-radius: 30px
 				display: block
-			span
-				background: $thin-brand
-				margin-left: 4px
-				padding: 4px
-				border-radius: 4px
-				font-size: 8px
-				font-weight: $extrabold
-				color: $white
-				text-transform: uppercase
-				letter-spacing: 2px
-				display: inline-block
+		span
+			background: $thin-brand
+			margin-left: 4px
+			padding: 5px 6px 4px 6px
+			border-radius: 4px
+			cursor: pointer
+			font-size: 8px
+			font-weight: $extrabold
+			color: $white
+			text-transform: uppercase
+			letter-spacing: 2px
+			display: inline-block
+			font-family: Helvetica, Arial, sans-serif
+		.right
+			margin-left: auto
+		.extract
+			color: $medium-grey
+			margin-left: 15px
+			font-size: 12px
+			font-style: italic
 		&.actions
 			padding-right: 10px
 			a

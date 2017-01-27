@@ -3,7 +3,14 @@
 		<table>
 			<% @issues.each do |issue| %>
 				<tr>
-					<td><%= link_to issue.content, articles_path(@theme.id, issue.id) %></td>
+					<td>
+						<%= content_tag :a, href: articles_path(@theme.id, issue.id) do %>
+							<%= issue.content %>
+							<div class="right">
+								<span><%= issue.articles_label %></span>
+							</div>
+						<% end %>
+					</td>
 					<td class="actions">
 						<%= link_to 'Modifier', edit_issue_path(@theme.id, issue.id) %>
 						<%= link_to 'Supprimer', destroy_issue_path(@theme.id, issue.id) %>
