@@ -35,11 +35,11 @@
 					<div class="content">
 						<%= article.main_content.html_safe %>
 					</div>
-					<div class="related">
+					<nav class="labels">
 						<% article.related.each do |related| %>
 							<%= link_to related.sure_title, article_path(related) %>
 						<% end %>
-					</div>
+					</nav>
 				</div>
 			</div>
 		<% end %>

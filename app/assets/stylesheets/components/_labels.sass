@@ -1,0 +1,24 @@
+.labels
+	padding: 10px 0
+	+cols((default: 2, medium: 1))
+	.row
+		margin-bottom: 30px
+		&:last-of-type
+			margin-bottom: 0
+	a
+		padding: 15px
+		border: 2px solid $light-grey
+		border-radius: 40px
+		display: block
+		font-size: 16px
+		color: $medium-grey
+		text-align: center
+		text-decoration: none
+		transition: 0.2s
+		&:hover
+			color: $thin-brand
+			border-color: $thin-brand
+		&:active
+			background: $thin-brand
+			color: $white
+			transition: 0
