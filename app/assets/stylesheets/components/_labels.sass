@@ -1,11 +1,8 @@
 .labels
 	padding: 10px 0
 	+cols((default: 2, medium: 1))
-	.row
-		margin-bottom: 30px
-		&:last-of-type
-			margin-bottom: 0
 	a
+		margin-bottom: 30px
 		padding: 15px
 		border: 2px solid $light-grey
 		border-radius: 40px
@@ -22,3 +19,5 @@
 			background: $thin-brand
 			color: $white
 			transition: 0
+	.row:last-of-type a:last-of-type
+		margin-bottom: 0
