@@ -1,5 +1,6 @@
 # Spinkop
  <p align="right"><sup>Projet tuteuré MMI 2016</sup></p>
+ 
  ### Configuration requise
  - [Ruby](https://www.ruby-lang.org/fr/documentation/installation/)
  - [Rails 4](http://guides.rubyonrails.org/getting_started.html#installing-rails)
