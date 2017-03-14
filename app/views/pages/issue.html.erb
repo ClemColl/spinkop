@@ -7,50 +7,54 @@
 <%= timeline_for @issue %>
 <main>
 	<div class="articles">
-		<% @articles.each do |article| %>
-			<div class="article" data-id="<%= article.id %>">
-				<% if article.image.exists? %>
-					<div class="image">
-						<div class="overlay" style="background: rgba(<%= @theme.rgb(-50).join(',') %>, 0.5)">
-							<% unless article.title.blank? %>
-								<p><%= article.title %></p>
-							<% end %>
+		<% if @articles.length == 0 %>
+			<p class="empty">Il n'y a pas encore d'article pour cette problématique</p>
+		<% else %>
+			<% @articles.each do |article| %>
+				<div class="article" data-id="<%= article.id %>">
+					<% if article.image.exists? %>
+						<div class="image">
+							<div class="overlay" style="background: rgba(<%= @theme.rgb(-50).join(',') %>, 0.5)">
+								<% unless article.title.blank? %>
+									<p><%= article.title %></p>
+								<% end %>
+							</div>
+							<%= image_tag article.image.url(:cover) %>
 						</div>
-						<%= image_tag article.image.url(:cover) %>
-					</div>
-				<% end %>
-				<div class="wrapper">
-					<div class="infos">
-						<div class="author">
-							<%= image_tag article.author.image.url(:thumb) %>
-							<span><%= article.author.fullname %></span>
+					<% end %>
+					<div class="wrapper">
+						<div class="infos">
+							<div class="author">
+								<%= image_tag article.author.image.url(:thumb) %>
+								<span><%= article.author.fullname %></span>
+							</div>
+							<nav class="tags">
+								<% article.tags.each do |tag| %>
+									<%= content_tag :a, href: tag_page_path(tag), style: style(backgroundColor: @theme.rgb_s) do %>
+										<%= tag.name %>
+									<% end %>
+								<% end %>
+							</nav>
 						</div>
-						<nav class="tags">
-							<% article.tags.each do |tag| %>
-								<%= content_tag :a, href: tag_page_path(tag), style: style(backgroundColor: @theme.rgb_s) do %>
-									<%= tag.name %>
+						<div class="content">
+							<%= article.main_content.html_safe %>
+						</div>
+						<nav class="labels">
+							<% article.related.each.with_index do |related, i| %>
+								<% if i%2 == 0 %>
+									<div class="row">
+								<% end %>
+								<div class="col">
+									<%= link_to related.sure_title, article_path(related) %>
+								</div>
+								<% if i%2 == 1 || i+1 >= article.related.length %>
+									</div>
 								<% end %>
 							<% end %>
 						</nav>
 					</div>
-					<div class="content">
-						<%= article.main_content.html_safe %>
-					</div>
-					<nav class="labels">
-						<% article.related.each.with_index do |related, i| %>
-							<% if i%2 == 0 %>
-								<div class="row">
-							<% end %>
-							<div class="col">
-								<%= link_to related.sure_title, article_path(related) %>
-							</div>
-							<% if i%2 == 1 || i+1 >= article.related.length %>
-								</div>
-							<% end %>
-						<% end %>
-					</nav>
 				</div>
-			</div>
+			<% end %>
 		<% end %>
 	</div>
 </main>

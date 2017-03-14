@@ -7,15 +7,19 @@
 <main>
 	<div class="wrapper">
 		<nav class="labels">
-			<% @issues.each.with_index do |issue, i| %>
-				<% if i%2 == 0 %>
-					<div class="row">
-				<% end %>
-				<div class="col">
-					<%= link_to issue.content, issue_page_path(issue.id) %></li>
-				</div>
-				<% if i%2 == 1 || i+1 >= @issues.length %>
+			<% if @issues.length == 0 %>
+				<p class="empty">Il n'y a pas encore de problématique dans ce thème</p>
+			<% else %>
+				<% @issues.each.with_index do |issue, i| %>
+					<% if i%2 == 0 %>
+						<div class="row">
+					<% end %>
+					<div class="col">
+						<%= link_to issue.content, issue_page_path(issue.id) %></li>
 					</div>
+					<% if i%2 == 1 || i+1 >= @issues.length %>
+						</div>
+					<% end %>
 				<% end %>
 			<% end %>
 		</nav>
