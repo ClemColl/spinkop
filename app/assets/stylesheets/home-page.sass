@@ -1,6 +1,7 @@
 @import partials/main
 @import partials/page
 @import components/form
+@import components/splash
 
 body
 	background: $brand
@@ -8,6 +9,14 @@ body
 
 main
 	padding-top: 0
+
+.theme-transition
+	width: 200px
+	height: 200px
+	border-radius: 200px
+	opacity: 1
+	position: fixed
+	transition: 0.9s
 
 .content
 	h3, p
@@ -86,16 +95,15 @@ main
 				.name, .articles
 					transform: translateY(20px)
 					transition: transform 0.2s
+			.theme-transition
+				opacity: 0
+				position: absolute
 			&:hover .infos
 				.name, .articles
 					transform: translateY(0)
 				.more
 					opacity: 1
 					transform: translateY(0)
-			&[data-opening], &[data-open]
-				.questions
-					position: fixed
-					z-index: 1000
 			&[data-open] .questions
 				width: 100%
 				height: 100%

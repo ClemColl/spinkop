@@ -1,5 +1,6 @@
 <div class="sub sub-issue" style="background: <%= @theme.color %>">
 	<div class="wrapper">
+		<%= link_to '', theme_page_path(@theme), class: :back %>
 		<%= @issue.content %>
 	</div>
 </div>

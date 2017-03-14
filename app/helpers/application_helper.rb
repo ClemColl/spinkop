@@ -38,6 +38,11 @@ module ApplicationHelper
 		issue_page_path(article.issue)+'#'+article.id.to_s
 	end
 
+	def splash color = nil
+		color = 'rgb('+color.join(',')+')' if color.is_a? Array
+		content_tag :div, nil, class: :splash, style: color.nil? ? nil : style(backgroundColor: color)
+	end
+
 	def style rules
 		rules.to_a.map{ |rule| rule[0].to_s.underscore.dasherize+':'+rule[1].to_s }.join ';'
 	end
@@ -248,9 +253,9 @@ module ApplicationHelper
 	def background type, *options
 		case type
 			when :image
-				"background-image: url('#{options[0]}')"
+				"background-image: url('#{options[0]}');"
 			when :gradient
-				"background-image: linear-gradient(#{options[0]}, #{options[1]})"
+				"background-image: linear-gradient(#{options[0]}, #{options[1]});"
 		end
 	end
 end

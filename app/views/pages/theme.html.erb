@@ -1,5 +1,6 @@
 <div class="sub sub-theme" style="background: <%= @theme.color %>">
 	<div class="wrapper">
+		<%= link_to '', root_path, class: :back %>
 		<%= @theme.name %>
 	</div>
 </div>
@@ -20,3 +21,6 @@
 		</nav>
 	</div>
 </main>
+<% if params.key? :transition %>
+	<%= splash @theme.rgb %>
+<% end %>
