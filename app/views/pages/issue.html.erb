@@ -1,7 +1,7 @@
 <div class="sub sub-issue" style="background: <%= @theme.color %>">
 	<div class="wrapper">
 		<%= link_to '', theme_page_path(@theme), class: :back %>
-		<%= @issue.content %>
+		<p><%= @issue.content %></p>
 	</div>
 </div>
 <%= timeline_for @issue %>
