@@ -57,6 +57,9 @@ class Article < ApplicationRecord
         self.tags.shuffle.each do |tag|
             if related.length < RELATED
                 excluded = related.map{ |article| [:id, article.id] }.to_h.merge(issue_id: self.issue.id)
+                puts '---------'
+                puts excluded
+                puts '---------'
                 article = tag.articles.where.not(excluded).take
                 related << article unless article.nil?
             else
