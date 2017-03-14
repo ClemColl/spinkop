@@ -36,8 +36,16 @@
 						<%= article.main_content.html_safe %>
 					</div>
 					<nav class="labels">
-						<% article.related.each do |related| %>
-							<%= link_to related.sure_title, article_path(related) %>
+						<% article.related.with_index do |related, i| %>
+							<% if i%2 == 0 %>
+								<div class="row">
+							<% end %>
+							<div class="col">
+								<%= link_to related.sure_title, article_path(related) %>
+							</div>
+							<% if i%2 == 1 || i+1 >= article.related.length %>
+								</div>
+							<% end %>
 						<% end %>
 					</nav>
 				</div>
