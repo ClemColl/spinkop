@@ -34,6 +34,14 @@ module ApplicationHelper
 		end
 	end
 
+	def article_path article
+		issue_page_path(article.issue)+'#'+article.id.to_s
+	end
+
+	def style rules
+		rules.to_a.map{ |rule| rule[0].to_s.underscore.dasherize+':'+rule[1].to_s }.join ';'
+	end
+
 	def is_root
 		@root = true
 	end

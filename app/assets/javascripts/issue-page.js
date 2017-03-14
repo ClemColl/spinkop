@@ -11,6 +11,22 @@ var issuePage = {
 		get selected() {
 			return document.querySelectorAll('.timeline > span[data-selected]');
 		},
+		get hashchange() {
+			var self = this;
+
+			return function() {
+				var id = window.location.hash.substring(1);
+				var element;
+				if(id.length > 0) {
+					for(var i = 0; i < self.elements.length; i++) {
+						if(self.elements[i].getAttribute('data-id') == id) {
+							self.click(self.dates[i], i)();
+							return;
+						}
+					}
+				}
+			};
+		},
 		click: function(element, offset) {
 			var self = this;
 
@@ -27,6 +43,9 @@ var issuePage = {
 				for(var i = 0; i < this.dates.length; i++) {
 					this.dates[i].on('click', this.click(this.dates[i], i));
 				}
+
+				window.on('hashchange', this.hashchange);
+				this.hashchange();
 			}
 		}
 	},

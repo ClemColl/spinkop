@@ -1,0 +1,30 @@
+.tags
+	span, a
+		background: $thin-brand
+		color: $white
+		padding: 0 6px 4px 6px
+		border-radius: 4px
+		margin: 0 4px 4px 0
+		font-size: 11px
+		cursor: pointer
+		display: inline-block
+		text-decoration: none
+		&:last-of-type
+			margin-right: 0
+		&::after
+			content: '×'
+			width: 0
+			height: 18px
+			top: 1px
+			overflow: hidden
+			position: relative
+			color: transparentize($white, 1)
+			font-size: 18px
+			display: inline-block
+			text-align: right
+			transition: 0.17s
+	&[data-editable]
+		span, a
+			&:hover::after
+				width: 13px
+				color: $white

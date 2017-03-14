@@ -75,6 +75,7 @@ Rails.application.routes.draw do
 
 	get '/theme/:id' => 'pages#theme', as: :theme_page
 	get '/issue/:id' => 'pages#issue', as: :issue_page
+	get '/tag/:id' => 'pages#tag', as: :tag_page
 
 	root to: 'pages#home'
 

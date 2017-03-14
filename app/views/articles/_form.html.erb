@@ -4,7 +4,7 @@
 	<%= f.hidden_field :issue_id %>
 
 	<%= f.field :tag, input: :text_field, label: 'Ajouter un tag' %>
-	<div class="tags">
+	<div class="tags" data-editable>
 		<% article.tags.each.with_index do |tag, i| %>
 			<span><%= tag.name %><%= hidden_field_tag "article[tag_ids][#{i}]", tag.id %></span>
 		<% end %>

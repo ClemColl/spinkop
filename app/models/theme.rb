@@ -50,6 +50,10 @@ class Theme < ApplicationRecord
 		rgb
 	end
 
+	def rgb_s delta = nil
+		'rgb('+self.rgb(delta).join(',')+')'
+	end
+
 	def issues_label
 		issues.length.to_s+' problématique'+(issues.length > 1 ? 's' : '')
 	end

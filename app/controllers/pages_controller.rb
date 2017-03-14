@@ -17,4 +17,11 @@ class PagesController < ApplicationController
 
 		render :issue, params.key?(:partial) ? { layout: false } : {}
 	end
+
+	def tag
+		@tag = Tag.find(params[:id])
+		@articles = @tag.articles
+
+		render :tag, params.key?(:partial) ? { layout: false } : {}
+	end
 end

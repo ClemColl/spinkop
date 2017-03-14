@@ -13,6 +13,8 @@
 class Article < ApplicationRecord
     include Searchable
 
+    RELATED = 6
+
     belongs_to :issue
     has_one :theme, through: :issue
     belongs_to :author, class_name: 'User'
@@ -48,6 +50,25 @@ class Article < ApplicationRecord
     end
 
     def tag
+    end
+
+    def related
+        related = []
+        self.tags.shuffle.each do |tag|
+            if related.length < RELATED
+                excluded = related.map{ |article| [:id, article.id] }.to_h.merge(issue_id: self.issue.id)
+                article = tag.articles.where.not(excluded).take
+                related << article unless article.nil?
+            else
+                break
+            end
+        end
+
+        related
+    end
+
+    def sure_title
+        self.title.blank? ? self.issue.content+' '+self.created_at.strftime('%d-%m-%Y') : self.title
     end
 
     private

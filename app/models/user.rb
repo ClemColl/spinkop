@@ -33,4 +33,8 @@ class User < ApplicationRecord
 	def self.admins
 		where admin: true
 	end
+
+	def fullname
+		self.firstname+' '+self.lastname
+	end
 end

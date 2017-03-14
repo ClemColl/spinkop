@@ -1,0 +1,22 @@
+<div class="sub sub-theme">
+	<div class="wrapper">
+		Tag: <%= @tag.name %>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="articles">
+			<% @articles.each.with_index do |article, i| %>
+				<% if i%2 == 0 %>
+					<div class="row">
+				<% end %>
+				<div class="col">
+					<%= link_to article.sure_title, article_path(article) %></li>
+				</div>
+				<% if i%2 == 1 || i+1 >= @articles.length %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</main>
