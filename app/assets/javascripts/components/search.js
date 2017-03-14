@@ -41,7 +41,7 @@ var search = {
 					this.search.offset--;
 					if(this.search.offset < 0) this.search.offset = results.length - 1;
 					search.clearResults(this);
-					results[this.search.offset].setAttribute('data-selected');
+					results[this.search.offset].setAttribute('data-selected', '');
 					event.preventDefault();
 				}
 			}
@@ -51,7 +51,7 @@ var search = {
 					this.search.offset++;
 					if(this.search.offset >= results.length) this.search.offset = 0;
 					search.clearResults(this);
-					results[this.search.offset].setAttribute('data-selected');
+					results[this.search.offset].setAttribute('data-selected', '');
 					event.preventDefault();
 				}
 			}
@@ -80,14 +80,14 @@ var search = {
 					}
 					else {
 						self.get(element.value, element.params, function(response) {
-							var li, result;
+							var li, result, content;
 							var results = search.results(element);
 							results.clear();
 
 							for(var i = 0; i < response.length; i++) {
 								result = response[i];
 								li = document.createElement('li');
-								li.text(result.content);
+								li.text(element.search.content(result));
 								li.search = result;
 								li.on('mousedown', function() {
 									element.value = this.search.content;
@@ -98,7 +98,7 @@ var search = {
 								results.append(li);
 							}
 
-							if(response.length != 0) element.setAttribute('data-search', '');
+							if(response.length !== 0) element.setAttribute('data-search', '');
 							else element.removeAttribute('data-search');
 						});
 					}
@@ -119,12 +119,16 @@ var search = {
 		};
 	},
 	watch: function(field) {
-		return function(element, callback) {
+		return function(element, callback, content) {
 			element.setAttribute('autocomplete', "off");
 			element.setAttribute('autocorrect', "off");
 			element.setAttribute('spellcheck', "false");
+
+			if(typeof content != 'function') content = function(result) { return result.content; }
+
 			element.search = {
 				callback: callback,
+				content: content,
 				offset: -1
 			};
 

@@ -4,8 +4,13 @@ module Searchable extend ActiveSupport::Concern
 
 	included do
 		def self.search input, options = nil
+			limit = search_limit
 			input = {input: input } unless input.is_a? Hash
-			input = input.merge(options) if options.is_a? Hash
+			if options.is_a? Hash
+				limit = options[:limit] if options.key? :limit
+				input = input.merge! options
+			end
+			input.delete :limit
 			params = []
 			query = ''
 
@@ -30,7 +35,7 @@ module Searchable extend ActiveSupport::Concern
 
 			query.gsub!(/ AND \z/, '')
 
-			where(query, *params).limit(search_limit)
+			where(query, *params).limit(limit)
 		end
 
 		def self.search_limit limit = nil

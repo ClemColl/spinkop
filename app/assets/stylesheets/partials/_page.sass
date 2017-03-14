@@ -52,29 +52,35 @@
 		form
 			max-width: 600px
 			margin: 0 auto
-			border: 2px solid $thin-brand
-			border-radius: 10px
-			display: flex
-			align-items: center
-			input
-				background: transparent
-				-webkit-appearance: none
-				-moz-appearance: none
-				border: none
-				font-family: 'Raleway'
-				font-size: 14px
-				outline: none
-				color: $white
-				&[type="text"]
-					padding: 14px 0 14px 14px
-					flex-grow: 1
-					+placeholder
-						color: $white
-				&[type=submit]
-					background: asset-url('search.svg') no-repeat center center / 20px auto
-					width: 48px
-					height: 48px
-					font-size: 0
-					color: transparent
-					flew-grow: 0
-					flex-shrink: 0
+			.field
+				border: 2px solid $thin-brand
+				border-radius: 10px
+				display: flex
+				align-items: center
+				input
+					background: transparent
+					-webkit-appearance: none
+					-moz-appearance: none
+					border: none
+					font-family: 'Raleway'
+					font-size: 14px
+					outline: none
+					color: $white
+					&[type="text"]
+						padding: 14px 0 14px 14px
+						flex-grow: 1
+						+placeholder
+							color: $white
+					&[type=submit]
+						background: asset-url('search.svg') no-repeat center center / 20px auto
+						width: 48px
+						height: 48px
+						font-size: 0
+						color: transparent
+						flex-grow: 0
+						flex-shrink: 0
+				ul
+					margin-top: 3px
+					background: $brand
+					&::before
+						background: $brand

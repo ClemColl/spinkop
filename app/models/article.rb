@@ -13,6 +13,9 @@
 class Article < ApplicationRecord
     include Searchable
 
+    search_display :sure_title
+    search_properties :title, :content
+
     RELATED = 6
 
     belongs_to :issue

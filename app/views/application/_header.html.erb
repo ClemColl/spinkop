@@ -7,8 +7,10 @@
 				<p>Les particules du numériques</p>
 				<% if action_is?(:home) %>
 					<form>
-						<input type="text" placeholder="Rechercher"/>
-						<input type="submit" value="Rechercher"/>
+						<div class="field">
+							<input type="text" placeholder="Rechercher" class="search"/>
+							<input type="submit" value="Rechercher"/>
+						</div>
 					</form>
 				<% end %>
 			</div>

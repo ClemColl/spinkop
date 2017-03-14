@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
 	def all
-		render json: search(:theme)+search(:issue)+search(:article)
+		render json: [:theme, :issue, :article, :tag].map{ |r| search r, 3 }.flatten
 	end
 
 	def themes
@@ -24,10 +24,12 @@ class SearchController < ApplicationController
 			params[:q]
 		end
 
-		def search record
-			record = "#{record}"
+		def search record, limit = nil
+			record = record.to_s
 			record_class = record.camelize.constantize
-			results = record_class.search(input, send("#{record}_params")).to_a
+			options = send("#{record}_params")
+			options.merge! limit: limit if limit.is_a? Fixnum
+			results = record_class.search(input, options).to_a
 
 			results.map do |result|
 				{
@@ -45,11 +47,11 @@ class SearchController < ApplicationController
 		end
 
 		def issue_params
-			params.permit(:theme_id)
+			params.key?(:theme_id) ? { theme_id: params[:theme_id] } : {}
 		end
 
 		def article_params
-			params.permit(:issue_id)
+			params.key?(:issue_id) ? { issue_id: params[:issue_id] } : {}
 		end
 
 		def tag_params

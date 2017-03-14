@@ -1,8 +1,11 @@
 //= require components/core/main
+//= require components/form
+//= require components/search
 
 var homePage = {
 	element: document.querySelector('.themes'),
 	elements: document.querySelectorAll('.theme'),
+	input: document.querySelector('.search'),
 	get initialized() {
 		return this.element.getAttribute('data-initialized') !== null;
 	},
@@ -90,6 +93,25 @@ var homePage = {
 			if(element.filled) element.on('mousedown', this.mousedown);
 		}
 
+		this.input.parentNode.parentNode.on('submit', function(event) {
+			event.preventDefault();
+		});
+
+		search.all.watch(this.input, function(result) {
+			var path;
+
+			console.log(result);
+
+			if(result.type == 'article') path = routes.issue_page(result.issue_id)+'#'+result.id;
+			else path = routes[result.type+'_page'](result.id);
+
+			window.location.href = path;
+		}, function(result) {
+			if(result.type == 'tag') return 'Tag: '+result.content;
+			else if(result.type == 'theme') return 'Thème: '+result.content;
+			else return result.content;
+		});
+
 		window.on('mousemove', this.mousemove);
 		this.mousemove({
 			clientX: 0,
@@ -100,5 +122,6 @@ var homePage = {
 
 
 main.exec('homePage', [
-	'eventsManager'
+	'eventsManager',
+	'search'
 ]);
