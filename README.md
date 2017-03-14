@@ -3,7 +3,7 @@
  
  ### Configuration requise
  - [Ruby](https://www.ruby-lang.org/fr/documentation/installation/)
- - [Rails 4](http://guides.rubyonrails.org/getting_started.html#installing-rails)
+ - [Rails 5](http://guides.rubyonrails.org/getting_started.html#installing-rails)
  - [PostgreSQL](https://www.postgresql.org)
  
  ### Installation
