@@ -3,8 +3,10 @@
 		<div class="wrapper">
 			<div>
 				<div class="web"></div>
-				<h1>Spin<span>kop</span></h1>
-				<p>Les particules du numériques</p>
+				<%= content_tag :a, href: root_path do %>
+					<h1>Spin<span>kop</span></h1>
+					<p>Les particules du numériques</p>
+				<% end %>
 				<% if action_is?(:home) %>
 					<form>
 						<div class="field">
