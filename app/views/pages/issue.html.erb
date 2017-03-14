@@ -36,7 +36,7 @@
 						<%= article.main_content.html_safe %>
 					</div>
 					<nav class="labels">
-						<% article.related.with_index do |related, i| %>
+						<% article.related.each.with_index do |related, i| %>
 							<% if i%2 == 0 %>
 								<div class="row">
 							<% end %>
