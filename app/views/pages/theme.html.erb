@@ -6,10 +6,10 @@
 </div>
 <main>
 	<div class="wrapper">
-		<nav class="labels">
-			<% if @issues.length == 0 %>
-				<p class="empty">Il n'y a pas encore de problématique dans ce thème</p>
-			<% else %>
+		<% if @issues.length == 0 %>
+			<p class="empty">Il n'y a pas encore de problématique dans ce thème</p>
+		<% else %>
+			<nav class="labels">
 				<% @issues.each.with_index do |issue, i| %>
 					<% if i%2 == 0 %>
 						<div class="row">
@@ -21,8 +21,8 @@
 						</div>
 					<% end %>
 				<% end %>
-			<% end %>
-		</nav>
+			</nav>
+		<% end %>
 	</div>
 </main>
 <% if params.key? :transition %>

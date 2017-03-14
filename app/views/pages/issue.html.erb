@@ -6,10 +6,12 @@
 </div>
 <%= timeline_for @issue %>
 <main>
-	<div class="articles">
-		<% if @articles.length == 0 %>
-			<p class="empty">Il n'y a pas encore d'article pour cette problématique</p>
-		<% else %>
+	<% if @articles.length == 0 %>
+		<div class="wrapper">
+			<p class="empty">Il n'y a pas encore d'article dans cette problématique</p>
+		</div>
+	<% else %>
+		<div class="articles">
 			<% @articles.each do |article| %>
 				<div class="article" data-id="<%= article.id %>">
 					<% if article.image.exists? %>
@@ -55,6 +57,6 @@
 					</div>
 				</div>
 			<% end %>
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 </main>
