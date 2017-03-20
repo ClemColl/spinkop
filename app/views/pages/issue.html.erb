@@ -1,11 +1,12 @@
 <div class="sub sub-issue" style="background: <%= @theme.color %>">
 	<div class="wrapper">
-		<%= link_to '', theme_page_path(@theme), class: :back %>
+		<%= link_to '', params.key?(:panel) ? comments_path : theme_page_path(@theme), class: :back %>
 		<p><%= @issue.content %></p>
 	</div>
 </div>
 <%= timeline_for @issue %>
 <main>
+	<%= render_flash %>
 	<% if @articles.length == 0 %>
 		<div class="wrapper">
 			<p class="empty">Il n'y a pas encore d'article dans cette problématique</p>
@@ -54,6 +55,34 @@
 								<% end %>
 							<% end %>
 						</nav>
+					</div>
+
+					<div class="comments wrapper">
+						<% if current_user? is: [:erasmus, :admin] %>
+							<%= render 'comments/form', comment: @comment, article: article, action: :new %>
+						<% end %>
+						<% article.approved_comments.each do |comment| %>
+							<div class="comment">
+								<div class="infos">
+									<div class="author">
+										<%= image_tag comment.author.image.url(:thumb) %>
+										<span><%= comment.author.fullname %></span>
+									</div>
+									<span class="date">
+										<%= comment.created_at.strftime '%d-%m-%Y' %>
+									</span>
+								</div>
+								<p>
+									<%= comment.content %>
+								</p>
+								<% if is_current_user? comment.author, or: :admin %>
+									<div class="actions">
+										<%= link_to 'Modifier', edit_comment_path(comment) %>
+										<%= link_to 'Supprimer', destroy_comment_path(comment), class: :sensible %>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			<% end %>

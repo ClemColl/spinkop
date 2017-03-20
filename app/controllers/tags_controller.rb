@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-	before_action :authorize
+	before_action { authorize only: [:admin, :contributor] }
 	before_action :set_tag, only: [:edit, :update, :destroy]
 	before_action :set_breadcrump, only: [:index, :edit]
 

@@ -14,6 +14,7 @@ class PagesController < ApplicationController
 		@issue = Issue.find(params[:id])
 		@theme = @issue.theme
 		@articles = @issue.articles
+		@comment = Comment.new
 
 		render :issue, params.key?(:partial) ? { layout: false } : {}
 	end

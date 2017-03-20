@@ -1,0 +1,26 @@
+<main>
+	<div class="wrapper">
+		<h1>Commentaires en attente</h1>
+		<table>
+			<% if @comments.length == 0 %>
+			<p>Aucun commentaire en attente</p>
+			<% else %>
+				<% @comments.each do |comment| %>
+					<tr>
+						<td>
+							<%= content_tag :a, href: edit_comment_path(comment.id, panel: '') do %>
+								<%= comment.author.fullname %>
+								<p class="extract"><%= comment.content %></p>
+							<% end %>
+						</td>
+						<td class="actions">
+							<%= link_to 'Voir l\'article', article_path(comment.article, panel: '') %>
+							<%= link_to 'Approuver', approve_comment_path(comment) %>
+							<%= link_to 'Supprimer', destroy_comment_path(comment)  %>
+						</td>
+					</tr>
+				<% end %>
+			<% end %>
+		</table>
+	</div>
+</main>

@@ -7,8 +7,10 @@
 						<%= content_tag :a, href: edit_user_path(user.id) do %>
 							<%= image_tag user.image.url(:thumb) %>
 							<%= user.firstname %>
-							<% if user.admin %>
-								<span>Admin</span>
+							<% if user.admin? %>
+								<span class="admin">Admin</span>
+							<% elsif user.erasmus? %>
+								<span class="erasmus">Erasmus</span>
 							<% end %>
 						<% end %>
 					</td>

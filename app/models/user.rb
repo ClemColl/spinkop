@@ -11,15 +11,21 @@
 #  image_content_type :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
-#  admin              :boolean
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  status             :integer
 #
 
 class User < ApplicationRecord
 	has_many :articles
 
 	has_secure_password
+
+	enum status: {
+		erasmus: 1,
+		contributor: 2,
+		admin: 3
+	}
 
 	has_attached_file :image, styles: { medium: '300x300#', thumb: '50x50#' }, default_url: '/default/user/image.svg'
 
@@ -30,8 +36,16 @@ class User < ApplicationRecord
 
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
 
+	def select_status
+		[self.class.statuses.keys.map { |s| [s.to_s.humanize, s] }, { selected: self.status }]
+	end
+
 	def self.admins
-		where admin: true
+		where status: :admin
+	end
+
+	def self.erasmuses
+		where status: :erasmus
 	end
 
 	def fullname

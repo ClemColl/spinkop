@@ -2,12 +2,17 @@
 #
 # Table name: articles
 #
-#  id         :integer          not null, primary key
-#  issue_id   :integer
-#  author_id  :integer
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :integer          not null, primary key
+#  issue_id           :integer
+#  author_id          :integer
+#  content            :text
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  title              :string
 #
 
 class Article < ApplicationRecord
@@ -33,6 +38,14 @@ class Article < ApplicationRecord
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
 
     before_save :clear_content
+
+    def comments
+        Comment.where(article: self).order(created_at: :desc)
+    end
+
+    def approved_comments
+        Comment.where(article: self, approved: true).order(created_at: :desc)
+    end
 
     def theme_id
         if self.issue

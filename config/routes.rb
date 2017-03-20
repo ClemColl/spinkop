@@ -11,6 +11,16 @@ Rails.application.routes.draw do
 		post '/new' => 'articles#create', as: :create_main_article
 	end
 
+    scope '/comments' do
+		get '/' => 'comments#index', as: :comments
+        get '/:article_id/new' => 'comments#new', as: :new_comment
+        post '/:article_id/new' => 'comments#create', as: :create_comment
+        get '/:id/edit' => 'comments#edit', as: :edit_comment
+        patch '/:id/edit' => 'comments#update', as: :update_comment
+        get '/:id/destroy' => 'comments#destroy', as: :destroy_comment
+		get '/:id/approve' => 'comments#approve', as: :approve_comment
+    end
+
 	scope '/tags' do
 		get '/' => 'tags#index', as: :tags
 		get '/new' => 'tags#new', as: :new_tag

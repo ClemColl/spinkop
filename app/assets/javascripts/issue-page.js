@@ -1,4 +1,5 @@
 //= require components/core/main
+//= require components/form
 
 var issuePage = {
 	articles: {

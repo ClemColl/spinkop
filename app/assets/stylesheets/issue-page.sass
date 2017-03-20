@@ -3,6 +3,10 @@
 @import components/tags
 @import components/rowcols
 @import components/labels
+@import components/form
+
+.flash
+	margin-top: 60px
 
 .issue
 	padding: 50px 0
@@ -136,6 +140,34 @@
 				text-transform: uppercase
 			p
 				margin-bottom: 20px
+		.comments
+			.infos
+				align-items: flex-start
+				margin-top: 0
+				img
+					width: 30px
+					height: 30px
+					margin-right: 15px
+				.date
+					font-size: 10px
+					font-weight: $bold
+			.comment
+				background: $thin-grey
+				padding: 30px
+				margin-bottom: 40px
+				border-radius: 8px
+				p
+					margin-top: 20px
+				.actions
+					margin-right: -15px
+					margin-bottom: -15px
+					a, span, input
+						&:not(.sensible)
+							background: $light-grey
+							&:hover
+								background: $grey
+		.new_comment
+			margin-bottom: 20px
 
 .labels
 	margin-top: 50px

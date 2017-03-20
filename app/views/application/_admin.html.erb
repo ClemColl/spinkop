@@ -4,7 +4,7 @@
 <% defer_route :articles_search %>
 <% defer_route :tags_search %>
 
-<% if controller_is?(:sessions, :themes, :issues, :articles, :users, :tags) %>
+<% if controller_is?(:sessions, :themes, :issues, :articles, :users, :tags) || (controller_is?(:comments) && action_is?(:index)) %>
 	<% if current_user? || (controller_is?(:sessions) && action_is?(:new, :create)) %>
 		<header class="admin">
 			<nav class="nav">
@@ -15,11 +15,12 @@
 					<% if current_user? %>
 						<%= link_to 'Thèmes', themes_path %>
 						<%= link_to 'Tags', tags_path %>
-						<% if is_admin? %>
+						<% if current_user? is: :admin %>
 							<%= link_to 'Utilisateurs', users_path %>
 						<% else %>
 							<%= link_to 'Compte', edit_user_path(current_user.id) %>
 						<% end %>
+						<%= link_to 'Commentaires', comments_path %>
 						<%= link_to 'Nouvelle problématique', new_main_issue_path %>
 						<%= link_to 'Nouvel article', new_main_article_path %>
 						<%= link_to 'Déconnexion', destroy_session_path %>

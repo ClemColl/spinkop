@@ -1,5 +1,5 @@
 class ThemesController < ApplicationController
-	before_action :authorize
+	before_action { authorize only: [:contributor, :admin] }
 	before_action :set_theme, only: [:edit, :update, :destroy]
 	before_action :set_breadcrump, only: [:index, :edit]
 

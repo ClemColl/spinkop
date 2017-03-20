@@ -25,12 +25,12 @@
 			</div>
 		</div>
 	</div>
-	<% if is_admin? %>
-		<%= f.field :admin, input: :check_box, label: 'Administrateur' %>
+	<% if current_user? is: :admin %>
+		<%= f.field :status, input: :select, label: 'Status', params: user.select_status %>
 	<% end %>
 
 	<div class="actions">
-		<% unless user.id.nil? || !is_admin? %>
+		<% unless user.id.nil? || !current_user?(is: :admin) %>
 			<%= link_to 'Supprimer', destroy_user_path(user.id), class: :sensible %>
 		<% end %>
 		<%= f.submit 'Confirmer' %>

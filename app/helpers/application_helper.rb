@@ -4,6 +4,11 @@ module ApplicationHelper
 	@defer_routes = ''
 	@defer_translations = ''
 	@is_root = false
+	@flash_rendered = false
+
+	def render_flash
+		@flash_rendered ? '' : render('flash')
+	end
 
 	def title content = nil
 		unless content.is_a?(String) || content.is_a?(Symbol)
@@ -34,8 +39,8 @@ module ApplicationHelper
 		end
 	end
 
-	def article_path article
-		issue_page_path(article.issue)+'#'+article.id.to_s
+	def article_path article, options = {}
+		issue_page_path(options.merge({id: article.issue.id}))+'#'+article.id.to_s
 	end
 
 	def splash color = nil

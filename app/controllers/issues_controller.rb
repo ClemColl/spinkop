@@ -1,12 +1,12 @@
 class IssuesController < ApplicationController
-	before_action :authorize, except: :index
+	before_action except: [:index] { authorize only: [:contributor, :admin] }
 	before_action :set_issue, only: [:edit, :update, :destroy]
 	before_action :set_issues, only: [:index, :new, :create, :edit, :update]
 	before_action :set_breadcrump, only: [:index, :edit]
 
 	def index
 		respond_to do |format|
-			format.html { authorize }
+			format.html { authorize [:contributor, :admin] }
 			format.json do
 				render json: @issues
 			end

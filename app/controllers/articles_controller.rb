@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-	before_action :authorize, except: [:show, :index]
+	before_action except: [:show, :index] { authorize only: [:contributor, :admin] }
 	before_action :set_article, only: [:edit, :update, :destroy]
 	before_action :set_articles, only: [:index, :new, :create, :edit, :update]
 	before_action :set_breadcrump, only: [:index, :edit]
@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
 	def index
 		respond_to do |format|
-			format.html { authorize }
+			format.html { authorize only: [:contributor, :admin] }
 			format.json do
 				render json: @articles
 			end
