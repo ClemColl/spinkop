@@ -58,9 +58,6 @@
 					</div>
 
 					<div class="comments wrapper">
-						<% if current_user? is: [:erasmus, :admin] %>
-							<%= render 'comments/form', comment: @comment, article: article, action: :new %>
-						<% end %>
 						<% article.approved_comments.each do |comment| %>
 							<div class="comment">
 								<div class="infos">
@@ -82,6 +79,9 @@
 									</div>
 								<% end %>
 							</div>
+						<% end %>
+						<% if current_user? is: [:erasmus, :admin] %>
+							<%= render 'comments/form', comment: @comment, article: article, action: :new %>
 						<% end %>
 					</div>
 				</div>
