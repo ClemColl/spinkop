@@ -1,0 +1,2 @@
+class Indefinition < ApplicationRecord
+end

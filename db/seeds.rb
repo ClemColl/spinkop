@@ -43,6 +43,13 @@ themes.each do |theme|
 	)
 end
 
+20.times do |n|
+	Indefinition.create(
+		name: "Nom de l'indef",
+		description: "Bonjour Lucas, j'espère que tout va bien, et que surtout, tu t'amuses bien à coder, je te souhaite un bon projet Tut :)",
+		auteur: "Oui"
+		)
+end
 # 20.times do |n|
 # 	Issue.create(
 # 		content: 'Issue #'+n.to_s,
