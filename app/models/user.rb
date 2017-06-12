@@ -27,8 +27,6 @@ class User < ApplicationRecord
 		admin: 3
 	}
 
-	has_attached_file :image, styles: { medium: '300x300#', thumb: '50x50#' }, default_url: '/default/user/image.svg'
-
 	validates :password, presence: { message: 'Veuillez indiquer un mot de passe' }, confirmation: { message: 'La confirmation ne correspond pas' }, length: { minimum: 6, message: 'Votre mot de passe doit comprendre au moins %{count} caractères' }, on: :create
     validates :email, presence: { message: 'Veuillez indiquer votre adresse email' }, email: { message: 'Adresse email invalide' }, uniqueness: { message: 'Cette adresse email est déjà utilisée' }
     validates :firstname, presence: { message: 'Veuillez indiquer votre prénom' }
