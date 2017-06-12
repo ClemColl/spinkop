@@ -32,8 +32,6 @@ class User < ApplicationRecord
     validates :firstname, presence: { message: 'Veuillez indiquer votre prénom' }
 	validates :lastname, presence: { message: 'Veuillez indiquer votre nom' }
 
-	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
-
 	def select_status
 		[self.class.statuses.keys.map { |s| [s.to_s.humanize, s] }, { selected: self.status }]
 	end
