@@ -9,7 +9,7 @@
 	        <p>Pour commencer veuillez choisir le thème que vous souhaitez</p>
 	        <div class="themes">
 				<%= theme_bubbles @themes do |theme| %>
-					<%= content_tag :a, class: :theme, href: theme_page_path(theme.id, transition: ''), style: background(:image, theme.image.url(:medium))+style(backgroundColor: theme.color), data: { color: theme.rgb_s } do %>
+					<%= content_tag :a, class: :theme, href: theme_page_path(theme.id, transition: ''), data: { color: theme.rgb_s } do %>
 						<div class="theme-transition" style="background: <%= theme.rgb_s %>"></div>
                         <div class="overlay" style="<%= background :gradient, *theme.gradient %>">
                             <div class="infos">
