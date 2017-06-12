@@ -1,2 +1,0 @@
-class Indefinition < ApplicationRecord
-end
