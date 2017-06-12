@@ -33,8 +33,6 @@ class Article < ApplicationRecord
     validates :title, length: { maximum: 60, message: 'Le titre doit contenir %{count} caractères ou moins' }
     validates :content, presence: { message: 'Veuillez écrire un contenu pour l\'article' }
 
-    validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
-
     before_save :clear_content
 
     def comments
