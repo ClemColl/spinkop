@@ -9,8 +9,10 @@
 <br>
 	    	<p>ou</p>
 <br>
+	<a href="#merciromainpourcelienergonomiquedeouf" style="text-decoration: none;color:white;">
 	        <h3>Sélectionnez un thème</h3>
-	        <div class="themes">
+	</a>
+	        <div class="themes" id="merciromainpourcelienergonomiquedeouf">
 				<%= theme_bubbles @themes do |theme| %>
 					<%= content_tag :a, class: :theme, href: theme_page_path(theme.id, transition: ''), data: { color: theme.rgb_s } do %>
 						<div class="theme-transition" style="background: <%= theme.rgb_s %>"></div>
