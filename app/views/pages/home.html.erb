@@ -5,8 +5,11 @@
 <main>
 	<div class="content">
 	    <div class="wrapper">
+	    	<h3><%= link_to "Notre toile d'indéfinitions", indefinitions_url, style: 'text-decoration:none;color:white;' %></h3>
+<br>
+	    	<p>ou</p>
+<br>
 	        <h3>Sélectionnez un thème</h3>
-	        <p>Pour commencer veuillez choisir le thème que vous souhaitez</p>
 	        <div class="themes">
 				<%= theme_bubbles @themes do |theme| %>
 					<%= content_tag :a, class: :theme, href: theme_page_path(theme.id, transition: ''), data: { color: theme.rgb_s } do %>
