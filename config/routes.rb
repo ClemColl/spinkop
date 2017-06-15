@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  scope '/indefinitions' do
+    get '/indefinitions/:id' => 'indefinitions#show'
+  end
 
 	scope '/issues' do
 		get '/new' => 'issues#new', as: :new_main_issue

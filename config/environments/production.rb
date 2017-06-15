@@ -85,4 +85,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
     config.consider_all_requests_local = true
+    config.assets.precompile += %w( admin.js )
 end

@@ -1,5 +1,6 @@
 //= require_self
 //= require_directory .
+//= require_tree .
 
 var main = {
 	quiet: false,
