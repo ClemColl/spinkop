@@ -21,6 +21,11 @@ class IndefinitionsController < ApplicationController
   def edit
   end
 
+  def update_indefs
+    require 'IndefAPI'
+    @update_indefs = IndefAPI.new.get_indefs
+  end
+
   # POST /indefinitions
   # POST /indefinitions.json
   def create

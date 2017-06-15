@@ -22,15 +22,15 @@ tags = [
 ]
 
 themes = [
-	{ name: 'Communication',          image: 'communication', color: '#5597ba' },
-	{ name: 'Innovation & technique', image: 'innovation',    color: '#d16c92' },
-	{ name: 'Pouvoir & politique',    image: 'political',     color: '#53c18a' },
-	{ name: 'Culture',                image: 'culture',       color: '#db9957' },
-	{ name: 'Jeux',                   image: 'games',         color: '#6e88d1' },
-	{ name: 'Sport',                  image: 'sport',         color: '#d1595c' },
-	{ name: 'Santé',                  image: 'medical',       color: '#75c756' },
-	{ name: 'Espace & temps',         image: 'space',         color: '#4e6c85' },
-	{ name: 'Économie',               image: 'money',         color: '#72d4d0' }
+	{ name: 'Communication',          color: '#5597ba' },
+	{ name: 'Innovation & technique', color: '#d16c92' },
+	{ name: 'Pouvoir & politique',    color: '#53c18a' },
+	{ name: 'Culture',                color: '#db9957' },
+	{ name: 'Jeux',                   color: '#6e88d1' },
+	{ name: 'Sport',                  color: '#d1595c' },
+	{ name: 'Santé',                  color: '#75c756' },
+	{ name: 'Espace & temps',         color: '#4e6c85' },
+	{ name: 'Économie',               color: '#72d4d0' }
 ]
 
 tags.each { |tag| Tag.create name: tag }
@@ -38,7 +38,6 @@ tags.each { |tag| Tag.create name: tag }
 themes.each do |theme|
 	Theme.create(
 		name: theme[:name],
-		image: File.new("#{Rails.root}/db/files/themes/#{theme[:image]}.jpg"),
 		color: theme[:color]
 	)
 end

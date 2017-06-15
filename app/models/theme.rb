@@ -21,13 +21,9 @@ class Theme < ApplicationRecord
 
 	search_property :name
 
-	has_attached_file :image, styles: { medium: '200x200#', cover: '1000x>' }, default_url: '/default/theme/image/:style.jpg'
-
 	validates :name, presence: { message: 'Veuillez indiquer le nom du thème' }
     validates :color, presence: { message: 'Veuillez indiquer une couleur' }, format: { with: /\A(?:#[abcdef0-9]{6})\z/i, message: 'Veuillez indiquer une couleur au format hexadécimal' }
 
-	validates_attachment_presence :image
-	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
 
 	def to_s
 		self.name

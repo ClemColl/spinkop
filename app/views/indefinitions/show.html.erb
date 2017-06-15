@@ -1,19 +1,8 @@
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @indefinition.name %>
-</p>
+<h1 style="color:white;"><%= @indefinition.name %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @indefinition.description %>
-</p>
+<p style="color:white;"><%= @indefinition.description %></p>
 
-<p>
-  <strong>Auteur:</strong>
-  <%= @indefinition.auteur %>
-</p>
-
-<%= link_to 'Edit', edit_indefinition_path(@indefinition) %> |
 <%= link_to 'Back', indefinitions_path %>

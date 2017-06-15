@@ -28,14 +28,10 @@ class Article < ApplicationRecord
     belongs_to :author, class_name: 'User'
     has_and_belongs_to_many :tags
 
-    has_attached_file :image, styles: { cover: '1000x>' }
-
     validates :issue, presence: { message: 'Cette problématique n\'existe pas' }
     validates :author, presence: { message: 'Aucun auteur n\'est enregistré pour cet article' }
     validates :title, length: { maximum: 60, message: 'Le titre doit contenir %{count} caractères ou moins' }
     validates :content, presence: { message: 'Veuillez écrire un contenu pour l\'article' }
-
-    validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/, size: { in: 0..2.megabytes }
 
     before_save :clear_content
 

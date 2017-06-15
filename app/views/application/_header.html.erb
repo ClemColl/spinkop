@@ -2,16 +2,15 @@
 	<header class="land<%= action_is?(:home) ? ' home' : '' %>">
 		<div class="wrapper">
 			<div>
-				<div class="web"></div>
-				<%= content_tag :a, href: root_path do %>
-					<h1>Spin<span>kop</span></h1>
-					<p>Les particules du numériques</p>
-				<% end %>
+			<%= link_to root_path do %>
+				<div class="web" <% if !action_is?(:home) %><%= 'style="position:absolute;"'.html_safe %><% end %>></div>
+					<h1 <% if !action_is?(:home) %><%= 'style="margin-left:75px;"'.html_safe %> <% end %>>Spin<span>kop</span></h1>
+					<p <% if !action_is?(:home) %><%= 'style="margin-left:75px;"'.html_safe %> <% end %>>Les particules du numériques</p>
+			<% end %>
 				<% if action_is?(:home) %>
 					<form>
 						<div class="field">
-							<input type="text" placeholder="Rechercher" class="search"/>
-							<input type="submit" value="Rechercher"/>
+							<input type="text" placeholder="Rechercher" class="search" style="text-align:center;"/>
 						</div>
 					</form>
 				<% end %>

@@ -1,0 +1,11 @@
+<% data = @update_indefs %>
+
+<% for record in data %>
+	<% if Indefinition.exists?(name: "#{record['name']}") %>
+	<% else %>
+	<% 	Indefinition.create!(name: "#{record['name']}", description: "#{record['description']}") %>
+	<% end %>
+<% end %>
+
+
+<script>window.location.replace("/indefinitions");</script>

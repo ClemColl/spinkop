@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :indefinitions
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope '/indefinitions' do
     get '/indefinitions/:id' => 'indefinitions#show'
@@ -92,6 +91,9 @@ Rails.application.routes.draw do
 	get '/tag/:id' => 'pages#tag', as: :tag_page
 
 	root to: 'pages#home'
+
+	get '/update_indefs' => 'indefinitions#update_indefs'
+	resources :indefinitions
 
 	match '*path' => 'errors#http_404', via: :all
 end
