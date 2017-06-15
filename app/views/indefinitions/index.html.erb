@@ -1,29 +1,81 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Have fun!</h1>
-
+<% i = 0 %>
 <p><%= link_to 'API', indefinitions_path( :format => :json ) %></p>
+<h1>La Toile des Indéfinitions</h1>
+<script type="text/javascript">
+  $( document ).ready(function(){
+    $(".img").hide();
+    $("#p1").click(function(){
+      $("#img1").fadeToggle(500);
+    })
+    $("#p2").click(function(){
+      $("#img2").fadeToggle(500);
+    })
+    $("#p3").click(function(){
+      $("#img3").fadeToggle(500);
+    })
+    $("#p4").click(function(){
+      $("#img4").fadeToggle(500);
+      $("#lien").css('z-index', '99');
+    })
+    $("#p5").click(function(){
+      $("#img5").fadeToggle(500);
+    })
+    $("#p6").click(function(){
+      $("#img6").fadeToggle(500);
+    })
+    $("#p7").click(function(){
+      $("#img7").fadeToggle(500);
+    })
+    $("#p8").click(function(){
+      $("#img8").fadeToggle(500);
+    })
+    $("#p9").click(function(){
+      $("#img9").fadeToggle(500);
+    })
+    $("#p10").click(function(){
+      $("#img10").fadeToggle(500);
+    })
+    $("#p11").click(function(){
+      $("#img11").fadeToggle(500);
+    })
+    $("#p12").click(function(){
+      $("#img12").fadeToggle(500);
+    })
+    $("#p13").click(function(){
+      $("#img13").fadeToggle(500);
+    })
+    $("#p14").click(function(){
+      $("#img14").fadeToggle(500);
+    })
+    $("#p15").click(function(){
+      $("#img15").fadeToggle(500);
+    })
+    $("#p16").click(function(){
+      $("#img16").fadeToggle(500);
+    })
+    $("#p17").click(function(){
+      $("#img17").fadeToggle(500);
+    })
+    $("#p18").click(function(){
+      $("#img18").fadeToggle(500);
+    })
+    $("#p19").click(function(){
+      $("#img19").fadeToggle(500);
+    })
+    $("#p20").click(function(){
+      $("#img20").fadeToggle(500);
+    })
+  });
+</script>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Auteur</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @indefinitions.each do |indefinition| %>
-      <tr>
-        <td><%= indefinition.name %></td>
-        <td><%= indefinition.description %></td>
-        <td><%= indefinition.auteur %></td>
-        <td><%= link_to 'Show', indefinition %></td>
-      </tr>
+<div class="flex">
+  <% @indefinitions.each do |indefinition| %>
+    <% i = i + 1 %>
+    <p class="flexP" id="p<%= i %>"><%= indefinition.name %> <%= image_tag('toileBlanche.png', class: 'img', id:"img#{i}") %></p>
+    <% if i == 4%>
+      <a href="/indefinitions/4" id="lien"></a>
     <% end %>
-  </tbody>
-</table>
-
-<br>
+  <% end %>
+</div>
