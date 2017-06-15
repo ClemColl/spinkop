@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<table>
 
+<div style="text-align:center;font-size:20px;"
 <% @indefinitions.order("RANDOM()").each do |indefinition| %>
   <%= link_to indefinition, style: "text-decoration:none;font-family:Raleway" do %>
-    <td><p style="color:white;"><%= indefinition.name %></p></td>
+    <p style="color:white;"><%= indefinition.name %></p>
   <% end %>
 <% end %>
-</table>
+</div>
